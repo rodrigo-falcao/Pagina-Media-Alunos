@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Professor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300&display=swap" rel="stylesheet">
+
+    <script>
+        function calculaMedia(){
+            const url = new URLSearchParams(window.location.search)
+            let nota1 = url.get("n1")
+            let nota2 = url.get("n2")
+
+            nota1 = Number(nota1)
+            nota2 = Number(nota2)
+            
+            let media = (nota1 + nota2)/2
+            
+            document.getElementById("media").value = media
+            
+            if(media >=6){
+                document.getElementById("status").innerHTML="Aprovado"
+                document.getElementById("status").style.color="green"
+            }else {
+                document.getElementById("status").innerHTML="Reprovado"
+                document.getElementById("status").style.color="red"
+            }
+        }
+    </script>
+</head>
+<body onload="calculaMedia()">
+    <main>
+    <h1>Painel do Professor</h1>
+    <form action="index.html" method="post">
+        <label>A média do aluno é:</label>
+        <input type="text" id="media">
+
+        <p>Portanto está <span id="status"></span> </p>
+        <input type="submit" value="Voltar">
+    </form>
+        
+    </main>
+</body>
+</html>
